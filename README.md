@@ -17,4 +17,4 @@ En tant qu'un débutant en développant en langauge Golang, la focntion de chat 
 pour plus d'information: 
 - la bibliothèque que j'ai utilisé pour le server est net/http 
 - 
-- ( je sais qu'il existe beaucoup d'autres bibliothèque(Socket ou mux) qui marchent mieux pour le serveur, mais j'ai des problèms à les importer (import could not found in Gopath ....) qui prend trpo de temps à résult, donc j'ai pas choix de choisir cette bibliothèque) 
+- ( je sais qu'il existe beaucoup d'autres bibliothèque(Socket ou mux) qui marchent mieux pour le serveur, mais j'ai des problèms à les importer (import could not found in Gopath ....) qui prend trop de temps à résult, donc j'ai pas choix de choisir cette bibliothèque) 
