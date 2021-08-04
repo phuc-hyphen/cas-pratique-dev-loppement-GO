@@ -14,14 +14,6 @@ import (
 	"time"
 )
 
-//Create a struct that holds information to be displayed in our HTML file
-type Welcome struct {
-	Name string
-	Time string
-}
-
-var welcome = Welcome{"Anonymous", time.Now().Format(time.Stamp)}
-
 //Go application entrypoint
 func main() {
 	//set up css for html 
@@ -35,8 +27,6 @@ func main() {
 
 	// chat room server
 	http.HandleFunc("/chatroom", chat_func)
-
-	http.HandleFunc("/1", redirect)
 
 	//Print any errors from starting the webserver using fmt
 	go fmt.Println(http.ListenAndServe(":8080", nil))
@@ -120,8 +110,11 @@ func check_api(w http.ResponseWriter, r *http.Request) {
 			used_pseudo=append(used_pseudo, pseudo)//add new pseudo in the list 
 				
 			err := writeLines(used_pseudo, "pseudoname.txt") // update file name 
-
+			errors:= writeLogs(used_pseudo, "log") // update file name 
 			if err != nil {
+				log.Fatalf("writeLines: %s", err)
+			}
+			if errors != nil {
 				log.Fatalf("writeLines: %s", err)
 			}
 			go io.WriteString(w," Pseudo name can be used ")
@@ -163,7 +156,7 @@ func writeLines(lines []string, path string) error {
     defer file.Close()
 
     for _, line := range lines {
-        _, errors:=file.WriteString(line + "\n" )
+        _, errors:=file.WriteString(line +"\n")
 		if errors != nil {
             log.Fatal(err)
         }
@@ -171,6 +164,18 @@ func writeLines(lines []string, path string) error {
     return nil
 }
 
-func redirect(w http.ResponseWriter, r *http.Request){
-	http.Redirect(w, r, "http://www.google.com", http.StatusFound)
+func writeLogs(lines []string, path string) error {
+    file, err := os.Create(path)
+    if err != nil {
+        return err
+    }
+    defer file.Close()
+
+    for _, line := range lines {
+        _, errors:=file.WriteString(line + "-" + string(time.Now().Format(time.Stamp))+"\n")
+		if errors != nil {
+            log.Fatal(err)
+        }
+    }
+    return nil
 }
