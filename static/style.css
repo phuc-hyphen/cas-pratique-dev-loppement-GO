@@ -1,0 +1,56 @@
+
+body{
+    background: scroll;
+    background-color:aquamarine
+    
+}
+#title{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 30px;
+    text-decoration: dashed;
+    text-align: center;
+    padding-top: 5%;
+}
+form{
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    height:10cm;
+    
+}
+p{
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: medium;
+    text-align: center;
+}
+#message{
+    position: absolute;
+    top:450px;
+    left: 750px;
+
+}
+input{
+    width: 300 px;
+    height:20px;
+}
+button{
+    width: 50px;
+    height: 20px;
+    cursor: pointer;
+}
+#enter{
+    
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    background-color: blueviolet;
+    width: max-content;
+    cursor: pointer;
+}
+#enter_case{
+    display: block;
+    /* visibility: hidden; */
+    text-decoration-color: aliceblue;
+}
