@@ -1,13 +1,14 @@
 // message box 
 const mes=document.getElementById("message")
- var xhr= new XMLHttpRequest(); 
+var user
 
 function get_infor() {
   
   const pseudo = document.getElementById("username").value;
+  user=pseudo
   
   // create xml http request 
-  
+  var xhr= new XMLHttpRequest(); 
   xhr.open("post","/api/check")
 
   // sending request 
@@ -22,9 +23,10 @@ function get_infor() {
       console.log("Receiving from server : ", taken,"\n\n")
       mes.innerHTML=taken
       if(taken==" Pseudo name can be used "){
-        console.log("navigate to ")
-        // document.location.href="http://localhost:8080/chatroom";
-        // document.getElementById("enter_case").style.visibility="visible"// when the pseudo utilisable,you can see the entry button 
+        console.log("navigate to chat room as pseudo name " + pseudo)
+        mes.innerText="Navigating to chat room ... "
+
+        redirect()
       }
     }
   })
@@ -37,26 +39,14 @@ function exit(){
   console.log(user + "are exiting chat room ")
 }
 
-
-function enter_chat(){
-
-  var xhr= new XMLHttpRequest();
-  xhr.open("post","/chatroom")
-
-  // console.log("Sending : ", pseudo)
-  // xhr.send(pseudo)
-
-  // receiving response
-
-  xhr.addEventListener("readystatechange",()=>{
-    if(xhr.readyState==4 && xhr.status == 200){
-      var taken = xhr.responseText;
-      var code =xhr.responseURL
-      console.log("Receiving from server : ", taken,"\n\n")
-      mes.innerHTML=taken
-    }
-  })
-
+function redirect(){
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST","/")
+  xhr.send(user)
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      console.log("redirect successful")
+    }};
 }
 
 
