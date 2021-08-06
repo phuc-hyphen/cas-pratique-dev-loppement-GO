@@ -38,7 +38,7 @@ button{
     height: 20px;
     cursor: pointer;
 }
-#enter{
+/* #enter{
     
     display: flex;
     justify-content: center;
@@ -48,9 +48,7 @@ button{
     background-color: blueviolet;
     width: max-content;
     cursor: pointer;
-}
-#enter_case{
+} */
+/* #enter_case{
     display: block;
-    /* visibility: hidden; */
-    text-decoration-color: aliceblue;
-}
+    text-decoration-color: aliceblue;} */

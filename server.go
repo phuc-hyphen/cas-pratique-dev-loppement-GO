@@ -10,7 +10,8 @@ import (
 
 	// "os/user"
 	"net/http"
-	// "net/url"
+	"net/url"
+
 	"os"
 
 	"time"
@@ -43,10 +44,20 @@ func Serverfunc(w http.ResponseWriter, r *http.Request) {
 		if err := r.ParseForm(); err != nil {
 			fmt.Println("template error parsefile : ", err)
 		}
-		// now redirect to the url
+		bs, errors := ioutil.ReadAll(r.Body)
+		if errors != nil {
+			http.Error(w, errors.Error(), http.StatusInternalServerError)
+			return
+		}
+		user := string(bs)
+
+		// // add user name in url
+		u, _ := url.Parse("http://localhost:8080/chatroom")
+		u.User = url.User(user)
 		
 		http.Redirect(w, r, "/chatroom", http.StatusFound)
-		return
+			return 
+
 	}
 
 	template, errors := template.ParseFiles("login.html")
@@ -59,11 +70,7 @@ func Serverfunc(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("template error execution  : ", errors)
 	}
 
-	// // add user name in url
-	// u, _ := url.Parse("http://localhost:8080/chatroom")
-	// fmt.Println("original:",u)
-	// user := "tom.jones"
-	// u.User = url.User(user)
+
 
 }
 
@@ -120,8 +127,6 @@ func check_api(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatalf("readLines: %s", err)
 	}
-
-	fmt.Println(used_pseudo)
 	//get pseudo entered
 	pseudo := string(bs)
 
@@ -132,10 +137,10 @@ func check_api(w http.ResponseWriter, r *http.Request) {
 
 			//response resquest
 			io.WriteString(w, " Pseudo name can be used ")
-			fmt.Println(used_pseudo)
+			
 
 			used_pseudo = append(used_pseudo, pseudo) //add new pseudo in the list
-
+			fmt.Println(used_pseudo)
 			// update file name
 			err := writeLines(used_pseudo, "pseudoname.txt")
 			if err != nil {
