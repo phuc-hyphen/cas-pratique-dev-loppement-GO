@@ -5,13 +5,13 @@ Voici, une application de chat en ligne développé en language Golang ,HTML,CSS
 
 Une fois vous avez téléchargé les documents, vous allez l'exécuter sur la console via la commande: go run server.go
 
-En suite, vous allez sur votre navigateur, allez sur votre address host: http://localhost:8080, il y a une page d'accueill développé en HTML avec GOlang comme serveur.
+En suite, vous allez sur votre navigateur, allez sur votre address host: http://localhost:8080, il y a une page d'accueill développée en HTML avec Golang comme serveur.
 
-Afin d'accéder au chat room, vous devez créer votre proper nom pseudo et le saisir dans le bar de text, vous cliquez sur le bouton chack pour savoir si le nom a été utilisé ou pas encore ( il y aura un message qui sera affiché rapidemant dans le case de text 'message')  
+Afin d'accéder au chat room, vous devez créer votre proper nom pseudo et le saisir dans le bar de text, vous cliquez sur le bouton check pour savoir si le nom a été utilisé ou pas encore ( il y aura un message qui sera affiché rapidemant dans le case de text 'message')  
 
 Si votre nom est utilisable, vous pouvez en suite cliquez sur le lien pour aller vers le chat room. ( si non vous pouvez également y aller via address http://localhost:8080/chatroom )
 
-En tant qu'un débutant en développant en language Go, la fonctionnalité de chat n'est pas encore implémenté (je suis vraiement désolé)
+pour l'instant, la fonctionnalité de chat n'est pas encore implémentée (je suis vraiement désolé)
 
 Par contre, vous pouvez revenir vers la page ed'accueill en cliquant sur le lien 'exit' au coin en haut.
 
